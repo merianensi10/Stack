@@ -93,3 +93,11 @@ int GetOperatorWeight(char op)
 	case '+':
 	case '-':
 		weight = 1;
+	case '*':
+	case '/':
+		weight = 2;
+	case '$':
+		weight = 3;
+	}
+	return weight;
+}
