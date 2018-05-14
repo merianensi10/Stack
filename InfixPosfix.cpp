@@ -77,3 +77,19 @@ bool IsOperator(char C)
 	return false;
 }
  
+//untuk mengecek asosiasi operator
+int IsRightAssociative(char op)
+{
+	if(op == '$') return true;
+	return false;
+}
+
+//fungsi untuk operator yang lebih tinggi
+int GetOperatorWeight(char op)
+{
+	int weight = -1; 
+	switch(op)
+	{
+	case '+':
+	case '-':
+		weight = 1;
