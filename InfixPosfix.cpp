@@ -36,3 +36,44 @@ string InfixToPostfix(string expression)
 		{
 			postfix +=expression[i];
 		}
+
+		else if (expression[i] == '(') 
+		{
+			S.push(expression[i]);
+		}
+		else if(expression[i] == ')') 
+		{
+			while(!S.empty() && S.top() !=  '(') {
+				postfix += S.top();
+				S.pop();
+			}
+			S.pop();
+		}
+	}
+
+	while(!S.empty()) {
+		postfix += S.top();
+		S.pop();
+	}
+
+	return postfix;
+}
+//untuk mengecek apakah karakter merupakan alfabet atau numerik
+//asumsikan operand adalah single character
+bool IsOperand(char C) 
+{
+	if(C >= '0' && C <= '9') return true;
+	if(C >= 'a' && C <= 'z') return true;
+	if(C >= 'A' && C <= 'Z') return true;
+	return false;
+}
+
+//untuk mengecek karakter adalah operator atau bukan
+bool IsOperator(char C)
+{
+	if(C == '+' || C == '-' || C == '*' || C == '/' || C== '$')
+		return true;
+
+	return false;
+}
+ 
