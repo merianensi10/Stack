@@ -101,3 +101,20 @@ int GetOperatorWeight(char op)
 	}
 	return weight;
 }
+
+//fungsi untuk menampilkan operasi dan return output
+int HasHigherPrecedence(char op1, char op2)
+{
+	int op1Weight = GetOperatorWeight(op1);
+	int op2Weight = GetOperatorWeight(op2);
+	
+	//jika operasi memiliki nilai operator yang sama, return true jika asosiasinya berada di kiri
+	//return false jika asosiasi berada di kanan
+	//jika operator merupakan left-associative, yang kiri harus diproritaskan
+	if(op1Weight == op2Weight)
+	{
+		if(IsRightAssociative(op1)) return false;
+		else return true;
+	}
+	return op1Weight > op2Weight ?  true: false;
+}
